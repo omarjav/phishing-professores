@@ -1,0 +1,77 @@
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI5MzQ3OWI0Ny05ZTZkLTRhMWYtYjc1Yy0xYTI1YjFkZWVmYzAiLCJpYXQiOjE3NDA0MjM4NjMsImV4cCI6MTc0MDQzODI2M30.xoIMkAI3V20H9JbpBy32owQulFhU8YFlcKeJGpMcOx8
+
+# @name Users
+
+## @name Create
+POST http://localhost:3333/user
+Content-Type: application/json
+
+{
+  "username": "unipam-security",
+  "password": "123456"
+}
+
+###
+
+## @name Authenticate
+POST http://localhost:3333/user/auth
+Content-Type: application/json
+
+  {
+    "username": "unipam-security",
+    "password": "123456"
+  }
+
+###
+
+# @name Target
+
+## @name Create
+POST http://localhost:3333/target
+Content-Type: application/json
+
+{
+  "username": "unipam-security2",
+  "email": "unipam2@unipam.com",
+  "logId": "2c0a63f4-3775-48af-9a52-e3204b4db690"
+}
+
+###
+
+## @name List
+GET http://localhost:3333/target
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+###
+
+# @name AccessLog
+
+## @name Create
+POST http://localhost:3333/access-log
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "device": "iPhone",
+  "ip": "0.0.0.0",
+  "hash": "HOLQPK2NCM"
+}
+
+###
+
+## @name List
+GET http://localhost:3333/access-log
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+###
+
+# @name ExpectedTarget
+
+## @name List
+GET http://localhost:3333/expected-target
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+###

@@ -1,0 +1,45 @@
+{
+  "name": "menu-master-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "vercel-build": "npx prisma migrate deploy",
+    "postinstall": "prisma generate",
+    "seed": "tsx prisma/seed.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "prisma": {},
+  "devDependencies": {
+    "@eslint/js": "^9.20.0",
+    "@types/bcryptjs": "^2.4.6",
+    "@types/node": "^20.6.0",
+    "@typescript-eslint/eslint-plugin": "^6.18.1",
+    "@typescript-eslint/parser": "^6.18.1",
+    "eslint": "^8.57.1",
+    "eslint-config-standard-with-typescript": "^43.0.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-n": "^16.6.2",
+    "eslint-plugin-promise": "^6.1.1",
+    "globals": "^15.15.0",
+    "prisma": "^5.6.0",
+    "tsx": "^3.12.10",
+    "typescript": "^5.3.3",
+    "typescript-eslint": "^8.24.0"
+  },
+  "dependencies": {
+    "@fastify/cors": "^8.3.0",
+    "@fastify/jwt": "^8.0.0",
+    "@fastify/multipart": "^9.0.3",
+    "@prisma/client": "^5.6.0",
+    "ai": "^4.1.41",
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.3.1",
+    "fastify": "^4.23.2",
+    "openai": "^4.7.0",
+    "zod": "^3.22.2"
+  }
+}
