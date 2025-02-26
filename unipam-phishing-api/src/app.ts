@@ -38,5 +38,5 @@ app.setErrorHandler((err, _, res) => {
     console.error(err)
   }
 
-  return res.status(500).send({ message: "Erro interno do servidor" })
+  return res.status(500).send(err)
 })
