@@ -11,7 +11,7 @@ export async function middleware(request: NextRequest) {
 
   if (request.nextUrl.pathname === '/') {
     const userLogId = request.cookies.get(cookies.userLogId)?.value
-    const userCupom = searchParams.get('oferta')
+    const userCupom = searchParams.get('token')
     const userPreviuosCupom = request.cookies.get(cookies.userCupom)?.value
 
     if (userLogId && userCupom === userPreviuosCupom || userLogId && !userCupom) {
