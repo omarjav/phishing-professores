@@ -1,14 +1,14 @@
 import { FastifyReply, FastifyRequest } from "fastify"
 
-import { TargetService } from "@app/services"
+import { TargetService } from "../../../services"
 
 import {
   PrismaAccessLogRepository,
   PrismaTargetRepository,
-} from "@app/repositories/prisma"
-import { createTargetBody } from "@app/services/validations"
+} from "../../../repositories/prisma"
+import { createTargetBody } from "../../../services/validations"
 
-import { AcessLogNotFoundError } from "@app/services/errors/access-log.error"
+import { AcessLogNotFoundError } from "../../../services/errors/access-log.error"
 
 export async function create(req: FastifyRequest, res: FastifyReply) {
   const { username, email, logId } = createTargetBody.parse(req.body)

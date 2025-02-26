@@ -1,8 +1,8 @@
 import { FastifyReply, FastifyRequest } from "fastify"
-import { PrismaUsersRepository } from "@app/repositories/prisma"
-import { InvalidCredentialsError } from "@app/services/errors"
-import { AuthService } from "@app/services"
-import { authUserBody } from "@app/services/validations"
+import { PrismaUsersRepository } from "../../../repositories/prisma"
+import { InvalidCredentialsError } from "../../../services/errors"
+import { AuthService } from "../../../services"
+import { authUserBody } from "../../../services/validations"
 
 export async function authentication(req: FastifyRequest, res: FastifyReply) {
 	const { username, password } = authUserBody.parse(req.body)

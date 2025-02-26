@@ -2,8 +2,8 @@ import { FastifyReply, FastifyRequest } from "fastify"
 
 import {
   PrismaExpectedTargetRepository,
-} from "@app/repositories/prisma"
-import { ExpectedTargetService } from "@app/services/expected-target.services"
+} from "../../../repositories/prisma"
+import { ExpectedTargetService } from "../../../services/expected-target.services"
 
 export async function list(_: FastifyRequest, res: FastifyReply) {
   const expectedTargetRepositry = new PrismaExpectedTargetRepository()

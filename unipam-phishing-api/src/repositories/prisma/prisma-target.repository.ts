@@ -1,5 +1,5 @@
-import { TargetRepository } from "@app/interfaces"
-import { prisma } from "@app/lib/prisma"
+import { TargetRepository } from "../../interfaces"
+import { prisma } from "../../lib/prisma"
 
 import { Prisma, Target } from "@prisma/client"
 

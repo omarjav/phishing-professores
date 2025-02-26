@@ -3,9 +3,9 @@ import { FastifyReply, FastifyRequest } from "fastify"
 import {
   PrismaAccessLogRepository,
   PrismaExpectedTargetRepository,
-} from "@app/repositories/prisma"
-import { createAccessLogBody } from "@app/services/validations/access-log.validations"
-import { AccessLogService } from "@app/services/access-log.services"
+} from "../../../repositories/prisma"
+import { createAccessLogBody } from "../../../services/validations/access-log.validations"
+import { AccessLogService } from "../../../services/access-log.services"
 
 export async function create(req: FastifyRequest, res: FastifyReply) {
   const { device, ip, hash } = createAccessLogBody.parse(req.body)

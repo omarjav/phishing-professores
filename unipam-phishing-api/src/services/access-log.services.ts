@@ -1,5 +1,5 @@
-import { AccessLogRepository, AccessLogServiceRequest } from "@app/interfaces/access-log.interface"
-import { ExpectedTargetRepository } from "@app/interfaces/expected-target.interface"
+import { AccessLogRepository, AccessLogServiceRequest } from "../interfaces/access-log.interface"
+import { ExpectedTargetRepository } from "../interfaces/expected-target.interface"
 
 export class AccessLogService {
   constructor(

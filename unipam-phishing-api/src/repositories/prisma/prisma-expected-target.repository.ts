@@ -1,5 +1,5 @@
-import { ExpectedTargetRepository } from "@app/interfaces/expected-target.interface"
-import { prisma } from "@app/lib/prisma"
+import { ExpectedTargetRepository } from "../../interfaces/expected-target.interface"
+import { prisma } from "../../lib/prisma"
 
 export class PrismaExpectedTargetRepository implements ExpectedTargetRepository {
   async findAll() {

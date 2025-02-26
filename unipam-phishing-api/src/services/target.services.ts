@@ -2,10 +2,10 @@ import {
   TargetRepository,
   TargetServiceRequest,
 
-} from "@app/interfaces/target.interface"
+} from "../interfaces/target.interface"
 
 import { TargetNotFoundError } from "./errors"
-import { AccessLogRepository } from "@app/interfaces/access-log.interface"
+import { AccessLogRepository } from "../interfaces/access-log.interface"
 import { AcessLogNotFoundError } from "./errors/access-log.error"
 
 export class TargetService {

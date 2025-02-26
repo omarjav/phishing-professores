@@ -1,12 +1,12 @@
 import { FastifyReply, FastifyRequest } from "fastify"
 
-import { UserService } from "@app/services"
+import { UserService } from "../../../services"
 
 import {
   PrismaUsersRepository,
-} from "@app/repositories/prisma"
-import { UserAlreadyRegistredError } from "@app/services/errors"
-import { createUserBody } from "@app/services/validations"
+} from "../../../repositories/prisma"
+import { UserAlreadyRegistredError } from "../../../services/errors"
+import { createUserBody } from "../../../services/validations"
 
 export async function create(req: FastifyRequest, res: FastifyReply) {
   const { username, password } = createUserBody.parse(req.body)

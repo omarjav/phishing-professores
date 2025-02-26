@@ -1,5 +1,5 @@
 
-import { ExpectedTargetRepository } from "@app/interfaces/expected-target.interface"
+import { ExpectedTargetRepository } from "../interfaces/expected-target.interface"
 
 export class ExpectedTargetService {
   constructor(

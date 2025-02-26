@@ -1,10 +1,10 @@
 import { FastifyReply, FastifyRequest } from "fastify"
 
-import { TargetService } from "@app/services"
+import { TargetService } from "../../../services"
 
 import {
   PrismaTargetRepository,
-} from "@app/repositories/prisma"
+} from "../../../repositories/prisma"
 
 export async function list(_: FastifyRequest, res: FastifyReply) {
 

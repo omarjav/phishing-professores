@@ -2,8 +2,8 @@ import { FastifyReply, FastifyRequest } from "fastify"
 
 import {
   PrismaAccessLogRepository,
-} from "@app/repositories/prisma"
-import { AccessLogService } from "@app/services/access-log.services"
+} from "../../../repositories/prisma"
+import { AccessLogService } from "../../../services/access-log.services"
 
 export async function list(_: FastifyRequest, res: FastifyReply) {
   const accessLogRepository = new PrismaAccessLogRepository()

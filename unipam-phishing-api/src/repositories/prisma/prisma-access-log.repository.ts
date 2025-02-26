@@ -1,5 +1,5 @@
-import { AccessLogRepository } from "@app/interfaces/access-log.interface"
-import { prisma } from "@app/lib/prisma"
+import { AccessLogRepository } from "../../interfaces/access-log.interface"
+import { prisma } from "../../lib/prisma"
 
 import { Prisma } from "@prisma/client"
 
