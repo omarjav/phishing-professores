@@ -45,15 +45,17 @@ export async function middleware(request: NextRequest) {
         value: userCupom,
         expires: expirationTime
       });
+
     }
 
-    await AccessLogServices.saveLog(logData)
-      .then((log) => response.cookies.set({
-        name: cookies.userLogId,
-        value: log.accessLog.logId,
-        path: '/',
-        expires: expirationTime
-      }));
+    const log = await AccessLogServices.saveLog(logData)
+
+    response.cookies.set({
+      name: cookies.userLogId,
+      value: log.accessLog.logId,
+      path: '/',
+      expires: expirationTime
+    })
 
     return response
   }
