@@ -1,5 +1,5 @@
 {
-  "name": "menu-master-api",
+  "name": "unipam-phishing-api",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -7,6 +7,9 @@
     "dev": "tsx watch src/server.ts",
     "vercel-build": "prisma generate && prisma migrate deploy",
     "postinstall": "prisma generate"
+  },
+  "imports": {
+    "#*": "./src/*"
   },
   "keywords": [],
   "author": "",
