@@ -12,9 +12,10 @@ export async function middleware(request: NextRequest) {
   if (request.nextUrl.pathname === '/') {
     const userLogId = request.cookies.get(cookies.userLogId)?.value
     const userCupom = searchParams.get('oferta')
+    const userPreviuosCupom = request.cookies.get(cookies.userCupom)?.value
 
-    if (userLogId) {
-      return
+    if (userLogId && userCupom === userPreviuosCupom) {
+      return response
     }
 
     const forwardedFor = request.headers.get("x-forwarded-for");
@@ -38,6 +39,12 @@ export async function middleware(request: NextRequest) {
 
     if (userCupom) {
       logData.hash = userCupom;
+
+      response.cookies.set({
+        name: cookies.userCupom,
+        value: userCupom,
+        expires: expirationTime
+      });
     }
 
     await AccessLogServices.saveLog(logData)

@@ -7,4 +7,6 @@ app
 	})
 	.then(() => {
 		console.log("Server running")
-	})
+	}).catch((err) => {
+    console.error(err)
+  })
