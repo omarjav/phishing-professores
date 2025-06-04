@@ -75,7 +75,7 @@ export default function Dashboard() {
 
       <div className="mb-4">
         <Select value={activeCategory} onValueChange={setActiveCategory}>
-          <SelectTrigger className="w-[180px]">
+          <SelectTrigger className="w-full max-w-xs">
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
