@@ -21,8 +21,29 @@ CREATE TABLE "TestCategory" (
     CONSTRAINT "TestCategory_pkey" PRIMARY KEY ("categoryId")
 );
 
+-- Create TestCategory
+INSERT INTO "TestCategory" ("categoryId", "name", "createdAt", "active") VALUES
+('36002350-caff-4297-8cfa-a03b0e4da7b5', CURRENT_TIMESTAMP, true);
+
+-- TestCategory in ExpectedTarget
+UPDATE "ExpectedTarget" SET "categoryId" = '36002350-caff-4297-8cfa-a03b0e4da7b5'
+WHERE "categoryId" IS NULL;
+
+-- TestCategory in Target
+UPDATE "Target" SET "categoryId" = '36002350-caff-4297-8cfa-a03b0e4da7b5'
+WHERE "categoryId" IS NULL;
+
 -- AddForeignKey
 ALTER TABLE "Target" ADD CONSTRAINT "Target_categoryId_fkey" FOREIGN KEY ("categoryId") REFERENCES "TestCategory"("categoryId") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "ExpectedTarget" ADD CONSTRAINT "ExpectedTarget_categoryId_fkey" FOREIGN KEY ("categoryId") REFERENCES "TestCategory"("categoryId") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+
+
+
+
+
+
+
+
