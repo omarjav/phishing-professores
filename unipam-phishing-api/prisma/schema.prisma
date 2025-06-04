@@ -29,15 +29,18 @@ model Target {
 }
 
 model AccessLog {
-  logId          String          @id @default(uuid())
-  ip             String          @db.VarChar(100)
-  device         String          @db.VarChar(20)
-  createdAt      DateTime        @default(now())
-  updatedAt      DateTime        @updatedAt
-  targetId       String?
-  hash           String?
+  logId      String   @id @default(uuid())
+  ip         String   @db.VarChar(100)
+  device     String   @db.VarChar(20)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  targetId   String?
+  hash       String?
+  categoryId String?
+
   target         Target?         @relation(fields: [targetId], references: [targetId])
   expectedTarget ExpectedTarget? @relation(fields: [hash], references: [hash])
+  testCategory   TestCategory?   @relation(fields: [categoryId], references: [categoryId])
 }
 
 model ExpectedTarget {
@@ -58,6 +61,7 @@ model TestCategory {
   createdAt  DateTime @default(now())
   active     Boolean  @default(true)
 
-  Target         Target[]
-  ExpectedTarget ExpectedTarget[]
+  target         Target[]
+  expectedTarget ExpectedTarget[]
+  accessLog      AccessLog[]
 }

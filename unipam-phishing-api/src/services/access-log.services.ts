@@ -1,10 +1,13 @@
+import { TestCategoryRepository } from "../interfaces"
 import { AccessLogRepository, AccessLogServiceRequest } from "../interfaces/access-log.interface"
 import { ExpectedTargetRepository } from "../interfaces/expected-target.interface"
+import { TestCategoryNotFoundActiveError } from "./errors"
 
 export class AccessLogService {
   constructor(
     private accessLogRepository: AccessLogRepository,
-    private expectedTargetRepository?: ExpectedTargetRepository
+    private expectedTargetRepository?: ExpectedTargetRepository,
+    private testCategoryRepository?: TestCategoryRepository
   ) { }
 
   async findAll() {
@@ -20,6 +23,13 @@ export class AccessLogService {
   }
 
   async create({ device, ip, hash }: AccessLogServiceRequest) {
+    const currentTestCategory = await this.testCategoryRepository?.findLastActive()
+
+    if (!currentTestCategory) {
+      throw new TestCategoryNotFoundActiveError()
+    }
+
+   const { categoryId } = currentTestCategory
 
     let expectedTarget
 
@@ -33,7 +43,8 @@ export class AccessLogService {
       ...(expectedTarget && {
         expectedTarget: {
           connect: {
-            hash: expectedTarget.hash
+            hash: expectedTarget.hash,
+            categoryId
           }
         }
       }),

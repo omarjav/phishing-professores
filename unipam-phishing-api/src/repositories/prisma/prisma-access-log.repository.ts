@@ -26,9 +26,7 @@ export class PrismaAccessLogRepository implements AccessLogRepository {
   async findAllByTargetCategoryId(categoryId: string) {
     const access = await prisma.accessLog.findMany({
       where: {
-        target: {
-          categoryId,
-        },
+        categoryId
       },
       include: {
         target: true,
