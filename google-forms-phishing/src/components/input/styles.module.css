@@ -1,0 +1,47 @@
+@keyframes inputAnimation {
+  0% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+
+.wrapper {
+  padding: 0.125em 0;
+}
+
+.input {
+  outline: none;
+
+  width: 100%;
+  height: 40px;
+
+  font-size: 0.875rem;
+  letter-spacing: .2px;
+  line-height: 20px;
+  color: var(--text-color);
+
+  border: none;
+
+  padding-top: 10px;
+  padding-bottom: 4px;
+}
+
+
+.inputLineBottom {
+  width: 100%;
+  height: 1px;
+  background: var(--gray);
+  transform: scaleX(1);
+  transform-origin: center;
+  transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.wrapper:focus-within .inputLineBottom {
+  height: 2px;
+  background: var(--primary-80);
+  animation: inputAnimation 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: center;
+}

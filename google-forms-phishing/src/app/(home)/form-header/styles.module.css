@@ -1,0 +1,70 @@
+.banner {
+  background-image: url("/images/audit.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  width: 100%;
+  height: 160px;
+
+  border: 1px solid var(--gray);
+  border-radius: var(--border-radius-default);
+
+  margin-top: 12px;
+  margin-bottom: 16px;
+}
+
+.formHeaderLine {
+  background: var(--primary-80);
+  height: 10px;
+
+  border-top-left-radius: var(--border-radius-default);
+  border-top-right-radius: var(--border-radius-default);
+}
+
+.formHeader {
+  width: 100%;
+  height: 100%;
+
+  background-color: var(--white);
+  border: 1px solid var(--gray);
+
+  border-radius: var(--border-radius-default);
+
+  line-height: 1.5;
+}
+
+.formHeader .contentWrapper {
+  padding: 12px 24px;
+
+  p {
+    font-size: 14.66667px;
+  }
+}
+
+.formHeader .contentWrapper .title {
+  font-family: Lobster, sans-serif;
+  font-size: 2rem;
+
+  margin-bottom: 12px;
+}
+
+.formHeader .contentWrapper .newAnswerLink {
+  margin-top: 25px;
+
+  text-decoration: underline;
+  font-size: 0.875rem;
+  color: rgb(26,115,232);
+}
+
+.formHeader .line {
+  width: 100%;
+  height: 1px;
+
+  background: var(--gray);
+}
+
+.formHeader .contentWrapper .requiredAnswers {
+  font-size: 0.875rem;
+  color: var(--red);
+}

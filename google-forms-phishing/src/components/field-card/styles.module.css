@@ -1,0 +1,46 @@
+.wrapper {
+  padding: 24px;
+  border: 1px solid var(--gray);
+  border-radius: var(--border-radius-default);
+
+  background: var(--white);
+}
+
+.wrapper.error {
+  border-color: var(--red);
+}
+
+.wrapperLabel {
+  display: flex;
+  align-items: start;
+  gap: .25em;
+}
+
+.wrapperLabel .required {
+  color: var(--red);
+}
+
+.label {
+  font-size: 1rem;
+  color: var(--text-color);
+  margin-bottom: 16px;
+  letter-spacing: 0;
+}
+
+.errorIcon {
+  width: 24px;
+  height: 24px;
+  fill: var(--red);
+}
+
+.errorWrapper {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 16px;
+}
+
+.errorWrapper span {
+  color: var(--red);
+  font-size: 0.75rem;
+}
