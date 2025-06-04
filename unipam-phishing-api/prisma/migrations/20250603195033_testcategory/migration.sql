@@ -1,3 +1,5 @@
+
+
 /*
   Warnings:
 
@@ -6,10 +8,10 @@
 
 */
 -- AlterTable
-ALTER TABLE "ExpectedTarget" ADD COLUMN     "categoryId" TEXT NOT NULL;
+ALTER TABLE "ExpectedTarget" ADD COLUMN  "categoryId" TEXT NULL;
 
 -- AlterTable
-ALTER TABLE "Target" ADD COLUMN     "categoryId" TEXT NOT NULL;
+ALTER TABLE "Target" ADD COLUMN  "categoryId" TEXT NULL;
 
 -- CreateTable
 CREATE TABLE "TestCategory" (
@@ -33,13 +35,15 @@ WHERE "categoryId" IS NULL;
 UPDATE "Target" SET "categoryId" = '36002350-caff-4297-8cfa-a03b0e4da7b5'
 WHERE "categoryId" IS NULL;
 
+-- AlterTable
+ALTER TABLE "ExpectedTarget" ALTER COLUMN "categoryId" SET NOT NULL;
+ALTER TABLE "Target" ALTER COLUMN "categoryId" SET NOT NULL;
+
 -- AddForeignKey
 ALTER TABLE "Target" ADD CONSTRAINT "Target_categoryId_fkey" FOREIGN KEY ("categoryId") REFERENCES "TestCategory"("categoryId") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "ExpectedTarget" ADD CONSTRAINT "ExpectedTarget_categoryId_fkey" FOREIGN KEY ("categoryId") REFERENCES "TestCategory"("categoryId") ON DELETE RESTRICT ON UPDATE CASCADE;
-
-
 
 
 
