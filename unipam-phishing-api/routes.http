@@ -1,10 +1,12 @@
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI5MzQ3OWI0Ny05ZTZkLTRhMWYtYjc1Yy0xYTI1YjFkZWVmYzAiLCJpYXQiOjE3NDA0MjM4NjMsImV4cCI6MTc0MDQzODI2M30.xoIMkAI3V20H9JbpBy32owQulFhU8YFlcKeJGpMcOx8
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI3OTc4ZTA2Ni1lZTU2LTQ1YmItODI5ZS05NDVlYzRmMWI1ZWYiLCJpYXQiOjE3NDkwNDQ5NzMsImV4cCI6MTc0OTA1OTM3M30.LGr4oJTZ14g30Tg96ckFBQAz3Ik4z2r_FRinTl3Xo-E
+@categoryId = 36002350-caff-4297-8cfa-a03b0e4da7b5
 
 # @name Users
 
 ## @name Create
 POST http://localhost:3333/user
 Content-Type: application/json
+Authorization: Bearer UNIPAM_TEST
 
 {
   "username": "unipam-security",
@@ -33,7 +35,7 @@ Content-Type: application/json
 {
   "username": "unipam-security2",
   "email": "unipam2@unipam.com",
-  "logId": "2c0a63f4-3775-48af-9a52-e3204b4db690"
+  "logId": "084859f3-0e45-4bdf-9b29-92bd9c3e6378"
 }
 
 ###
@@ -75,3 +77,47 @@ Content-Type: application/json
 Authorization: Bearer {{token}}
 
 ###
+
+## @name ListByCategoryId
+GET http://localhost:3333/expected-target/category/{categoryId}
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+###
+
+## @name Create
+POST http://localhost:3333/expected-target
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "username": "unipam-security3",
+  "email": "teste@unipam.edu.br"
+}
+
+###
+
+# @name TestCategory
+
+## @name Create
+POST http://localhost:3333/test-category
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "name": "Test Category 2"
+}
+
+###
+
+## @name ListAll
+GET http://localhost:3333/test-category
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+###
+
+## @name ListLastActive
+GET http://localhost:3333/test-category/last-active
+Content-Type: application/json
+Authorization: Bearer {{token}}

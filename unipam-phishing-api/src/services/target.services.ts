@@ -4,14 +4,16 @@ import {
 
 } from "../interfaces/target.interface"
 
-import { TargetNotFoundError } from "./errors"
-import { AccessLogRepository } from "../interfaces/access-log.interface"
-import { AcessLogNotFoundError } from "./errors/access-log.error"
+import { AcessLogNotFoundError, TargetNotFoundError, TestCategoryNotFoundActiveError } from "./errors"
+
+import { AccessLogRepository, TestCategoryRepository } from "../interfaces"
+
 
 export class TargetService {
   constructor(
     private targetRepository: TargetRepository,
-    private accessLogRepository?: AccessLogRepository
+    private accessLogRepository?: AccessLogRepository,
+    private testCategoryRepository?: TestCategoryRepository
   ) { }
 
   async findById(targetId: string) {
@@ -27,7 +29,15 @@ export class TargetService {
   }
 
   async createOrUpdate({ username, email, logId }: TargetServiceRequest) {
-    const verifyTargetAlreadyRegistred = await this.targetRepository.findByUsername(username)
+    const currentTestCategory = await this.testCategoryRepository?.findLastActive()
+
+    if (!currentTestCategory) {
+      throw new TestCategoryNotFoundActiveError()
+    }
+
+    const { categoryId } = currentTestCategory
+
+    const verifyTargetAlreadyRegistred = await this.targetRepository.findByUsernameAndCategoryId(username, categoryId)
 
     let target
 
@@ -38,6 +48,11 @@ export class TargetService {
       target = await this.targetRepository.create({
         username,
         email,
+        category: {
+          connect: {
+            categoryId
+          }
+        }
       })
     }
 
@@ -69,4 +84,13 @@ export class TargetService {
       targets,
     }
   }
+
+  async findAllByCategoryId(username: string) {
+    const targets = await this.targetRepository.findAllByCategoryId(username)
+
+    return {
+      targets,
+    }
+  }
+
 }

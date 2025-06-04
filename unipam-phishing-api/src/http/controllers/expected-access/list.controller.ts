@@ -17,3 +17,17 @@ export async function list(_: FastifyRequest, res: FastifyReply) {
   )
 }
 
+export async function listByCategoryId(req: FastifyRequest, res: FastifyReply) {
+  const { categoryId } = req.params as { categoryId: string }
+
+  const expectedTargetRepositry = new PrismaExpectedTargetRepository()
+
+  const expectedTargetService = new ExpectedTargetService(expectedTargetRepositry)
+
+  const accessLog = await expectedTargetService.findAllByCategoryId(categoryId)
+
+  return await res.status(200).send(
+    accessLog
+  )
+}
+

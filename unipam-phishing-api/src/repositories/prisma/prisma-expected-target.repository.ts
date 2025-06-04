@@ -19,6 +19,24 @@ export class PrismaExpectedTargetRepository implements ExpectedTargetRepository 
     return expectedTargets
   }
 
+  async findAllByCategoryId(categoryId: string) {
+    const expectedTargets = await prisma.expectedTarget.findMany({
+      where: { categoryId },
+      include: {
+        accessLog: {
+          include: {
+            target: true,
+          },
+        },
+      },
+      orderBy: {
+        name: 'asc',
+      }
+    })
+
+    return expectedTargets
+  }
+
   async findByHash(hash: string) {
     const access = await prisma.expectedTarget.findFirst({
       where: { hash },

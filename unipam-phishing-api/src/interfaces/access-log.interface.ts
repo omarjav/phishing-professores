@@ -9,6 +9,7 @@ export interface AccessLogServiceRequest {
 export interface AccessLogRepository {
   findAll(): Promise<AccessLog[]>;
   findByLogId(logId: string): Promise<AccessLog | null>;
+  findAllByTargetCategoryId(categoryId: string): Promise<AccessLog[]>;
   findByIpAndDevice(accessLogRequest: Prisma.AccessLogWhereInput): Promise<AccessLog | null>;
   create(data: Prisma.AccessLogCreateInput): Promise<AccessLog>;
   update(targetId: string, data: Prisma.AccessLogUpdateInput): Promise<AccessLog>;

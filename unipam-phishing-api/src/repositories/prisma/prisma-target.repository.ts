@@ -4,8 +4,17 @@ import { prisma } from "../../lib/prisma"
 import { Prisma, Target } from "@prisma/client"
 
 export class PrismaTargetRepository implements TargetRepository {
+
   async findAll() {
     const targets = await prisma.target.findMany()
+
+    return targets
+  }
+
+  async findAllByCategoryId(categoryId: string) {
+    const targets = await prisma.target.findMany({
+      where: { categoryId },
+    })
 
     return targets
   }
@@ -22,6 +31,14 @@ export class PrismaTargetRepository implements TargetRepository {
   async findByUsername(username: string) {
     const target = await prisma.target.findFirst({
       where: { username },
+    })
+
+    return target
+  }
+
+  async findByUsernameAndCategoryId(username: string, categoryId: string): Promise<Target | null> {
+    const target = await prisma.target.findFirst({
+      where: { username, categoryId },
     })
 
     return target

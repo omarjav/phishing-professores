@@ -1,3 +1,5 @@
 export * from "./target.validations"
 export * from "./user.validations"
 export * from "./auth.validations"
+export * from "./access-log.validations"
+export * from "./test-category.validations"

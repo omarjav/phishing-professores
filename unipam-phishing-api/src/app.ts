@@ -8,6 +8,7 @@ import fastifyJwt from "@fastify/jwt"
 import { userRoutes } from "./http/controllers/user/routes"
 import { accessLogRoutes } from "./http/controllers/access-log/routes"
 import { expectedTargetRoutes } from "./http/controllers/expected-access/routes"
+import { testCategoryRoutes } from "./http/controllers/test-category/routes"
 
 export const app = fastify()
 
@@ -26,6 +27,7 @@ app.register(accessLogRoutes)
 app.register(expectedTargetRoutes)
 app.register(userRoutes)
 app.register(targetRoutes)
+app.register(testCategoryRoutes)
 
 app.setErrorHandler((err, _, res) => {
   if (err instanceof ZodError) {

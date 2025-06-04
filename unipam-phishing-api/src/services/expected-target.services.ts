@@ -13,4 +13,12 @@ export class ExpectedTargetService {
       expectedTarget,
     }
   }
+
+  async findAllByCategoryId(categoryId: string) {
+    const expectedTarget = await this.expectedTargetRepositry.findAllByCategoryId(categoryId)
+
+    return {
+      expectedTarget,
+    }
+  }
 }

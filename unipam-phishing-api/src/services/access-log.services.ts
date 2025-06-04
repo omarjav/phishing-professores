@@ -13,6 +13,12 @@ export class AccessLogService {
     return { accessLog }
   }
 
+  async findByTargetCategoryId(categoryId: string) {
+    const accessLog = await this.accessLogRepository.findAllByTargetCategoryId(categoryId)
+
+    return { accessLog }
+  }
+
   async create({ device, ip, hash }: AccessLogServiceRequest) {
 
     let expectedTarget

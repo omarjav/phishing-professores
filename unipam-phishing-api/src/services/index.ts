@@ -1,3 +1,5 @@
 export * from "./auth.services"
 export * from "./target.services"
 export * from "./user.services"
+export * from "./access-log.services"
+export * from "./test-category.services"

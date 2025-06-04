@@ -5,6 +5,7 @@ import { TargetService } from "../../../services"
 import {
   PrismaAccessLogRepository,
   PrismaTargetRepository,
+  PrismaTestCategoryRepository,
 } from "../../../repositories/prisma"
 import { createTargetBody } from "../../../services/validations"
 
@@ -16,8 +17,9 @@ export async function create(req: FastifyRequest, res: FastifyReply) {
   try {
     const targetRepository = new PrismaTargetRepository()
     const accessLogRepository = new PrismaAccessLogRepository()
+    const testCategoryRepository = new PrismaTestCategoryRepository()
 
-    const targetService = new TargetService(targetRepository, accessLogRepository)
+    const targetService = new TargetService(targetRepository, accessLogRepository, testCategoryRepository)
 
     await targetService.createOrUpdate({
       username,
