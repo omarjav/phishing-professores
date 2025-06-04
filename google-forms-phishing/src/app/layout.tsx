@@ -10,6 +10,7 @@ const robotoSans = Roboto({
 
 const lobsterSans = Lobster({
   variable: "--font-lobster",
+  subsets: ["latin"],
   weight: "400",
 });
 
