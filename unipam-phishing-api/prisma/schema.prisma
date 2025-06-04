@@ -36,11 +36,11 @@ model AccessLog {
   updatedAt  DateTime @updatedAt
   targetId   String?
   hash       String?
-  categoryId String?
+  categoryId String
 
+  testCategory   TestCategory?   @relation(fields: [categoryId], references: [categoryId])
   target         Target?         @relation(fields: [targetId], references: [targetId])
   expectedTarget ExpectedTarget? @relation(fields: [hash], references: [hash])
-  testCategory   TestCategory?   @relation(fields: [categoryId], references: [categoryId])
 }
 
 model ExpectedTarget {

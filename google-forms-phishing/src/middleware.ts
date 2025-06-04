@@ -12,9 +12,9 @@ export async function middleware(request: NextRequest) {
   if (request.nextUrl.pathname === '/') {
     const userLogId = request.cookies.get(cookies.userLogId)?.value
     const userHash = searchParams.get('token')
-    const userPreviuosCupom = request.cookies.get(cookies.userHash)?.value
+    const userPreviuosHash = request.cookies.get(cookies.userHash)?.value
 
-    if (userLogId && userHash === userPreviuosCupom || userLogId && !userHash) {
+    if (userLogId && userHash === userPreviuosHash || userLogId && !userHash) {
       return response
     }
 

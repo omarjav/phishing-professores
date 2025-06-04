@@ -40,11 +40,17 @@ export class AccessLogService {
     const accessLog = await this.accessLogRepository.create({
       device,
       ip,
+     testCategory:{
+        connect: {
+          categoryId,
+        }
+      },
+      ...(hash && { hash }),
+      ...(expectedTarget && { expectedTarget: { connect: { hash: expectedTarget.hash } } }),
       ...(expectedTarget && {
         expectedTarget: {
           connect: {
             hash: expectedTarget.hash,
-            categoryId
           }
         }
       }),
