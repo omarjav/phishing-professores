@@ -29,7 +29,7 @@ export class AccessLogService {
       throw new TestCategoryNotFoundActiveError()
     }
 
-   const { categoryId } = currentTestCategory
+    const { categoryId } = currentTestCategory
 
     let expectedTarget
 
@@ -40,13 +40,11 @@ export class AccessLogService {
     const accessLog = await this.accessLogRepository.create({
       device,
       ip,
-     testCategory:{
+      testCategory: {
         connect: {
           categoryId,
         }
       },
-      ...(hash && { hash }),
-      ...(expectedTarget && { expectedTarget: { connect: { hash: expectedTarget.hash } } }),
       ...(expectedTarget && {
         expectedTarget: {
           connect: {
