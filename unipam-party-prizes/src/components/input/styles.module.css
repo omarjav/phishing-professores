@@ -1,0 +1,47 @@
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.input {
+  display: flex;
+  align-items: center;
+
+  width: 100%;
+  padding: 1rem 1.5rem;
+
+  background: var(--white);
+  border: 1px solid rgba(7, 59, 89, 0.6);
+  border-radius: 0.25rem;
+
+  font-family: var(--font-open-sans);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--text-black);
+
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.input::placeholder {
+  color: darkgrey;
+}
+
+.input:focus {
+  border-color: var(--primary);
+}
+
+.input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background: var(--background);
+}
+
+.errorMessage {
+  color: var(--error);
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.5;
+}
